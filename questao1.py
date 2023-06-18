@@ -23,11 +23,11 @@ class Lista:
             print(temp.valor)
             temp = temp.prox
 
-    def last(self):
-        temp = self.head
-        while temp.prox is not None:
-            temp = temp.prox
-        return temp
+    # def last(self):
+    #     temp = self.head
+    #     while temp.prox is not None:
+    #         temp = temp.prox
+    #     return temp
 
     def find(self, n):
         temp = self.head
@@ -83,16 +83,14 @@ def main():
     lista = Lista()
     lista.insert(encadeamento_nos[0][0])
 
-    for i in range(0, len(encadeamento_nos)):
-        for j in encadeamento_nos:
-            last = lista.last()
-            if last.valor == j[0]:
-                if lista.find(j[1]) is None:
-                    lista.insert(j[1])
-                    break
-                else:
-                    lista.last().prox = lista.find(j[1])
-                    break
+    for j in encadeamento_nos:
+        no = lista.find(j[0])
+        if lista.find(j[1]) is None:
+            lista.insert(j[1])
+            print("No inserido: ", j[1])
+        else:
+            no.prox = lista.find(j[1])
+
 
     lista.detect()
 
